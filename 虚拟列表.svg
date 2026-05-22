@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="900" height="360">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0f7f7"/>
+      <stop offset="100%" stop-color="#e8f4f0"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6ABF8B"/>
+      <stop offset="100%" stop-color="#58A87A"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5BA4CF"/>
+      <stop offset="100%" stop-color="#4A90B8"/>
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5CB8B8"/>
+      <stop offset="100%" stop-color="#4AA3A3"/>
+    </linearGradient>
+    <linearGradient id="viewport" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f5fafc"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="2" stdDeviation="6" flood-color="#4A90B8" flood-opacity="0.08"/>
+    </filter>
+    <filter id="innerShadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="1" stdDeviation="4" flood-color="#000" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <rect width="900" height="360" rx="14" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="450" y="38" text-anchor="middle" fill="#3a5a6a" font-family="system-ui,sans-serif" font-size="17" font-weight="700">虚拟列表原理</text>
+
+  <!-- ============ 传统列表 ============ -->
+  <rect x="40" y="55" width="380" height="280" rx="12" fill="white" filter="url(#shadow)" stroke="#e0e8ec" stroke-width="1"/>
+  <rect x="40" y="55" width="380" height="36" rx="12" fill="#E88070"/><rect x="40" y="79" width="380" height="12" fill="#E88070"/>
+  <text x="230" y="79" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="13" font-weight="700">传统列表（10000 条）</text>
+
+  <!-- All 10000 items rendered -->
+  <rect x="55" y="102" width="350" height="18" rx="4" fill="#fce8e4" opacity="0.9"/>
+  <text x="60" y="115" fill="#b85a4a" font-family="system-ui,sans-serif" font-size="8">#1</text>
+  <rect x="55" y="124" width="350" height="18" rx="4" fill="#fce8e4" opacity="0.85"/>
+  <text x="60" y="137" fill="#b85a4a" font-family="system-ui,sans-serif" font-size="8">#2</text>
+  <rect x="55" y="146" width="350" height="18" rx="4" fill="#fce8e4" opacity="0.8"/>
+  <text x="60" y="159" fill="#b85a4a" font-family="system-ui,sans-serif" font-size="8">#3</text>
+  <rect x="55" y="168" width="350" height="18" rx="4" fill="#fce8e4" opacity="0.75"/>
+  <text x="60" y="181" fill="#b85a4a" font-family="system-ui,sans-serif" font-size="8">#4</text>
+  <rect x="55" y="190" width="350" height="18" rx="4" fill="#fce8e4" opacity="0.7"/>
+  <text x="60" y="203" fill="#b85a4a" font-family="system-ui,sans-serif" font-size="8">#5</text>
+  <!-- dots -->
+  <text x="230" y="227" text-anchor="middle" fill="#E88070" font-family="system-ui,sans-serif" font-size="10">⋮ 9995 items ⋮</text>
+  <rect x="55" y="245" width="350" height="18" rx="4" fill="#fce8e4" opacity="0.6"/>
+  <text x="60" y="258" fill="#b85a4a" font-family="system-ui,sans-serif" font-size="8">#9999</text>
+  <rect x="55" y="267" width="350" height="18" rx="4" fill="#fce8e4" opacity="0.55"/>
+  <text x="60" y="280" fill="#b85a4a" font-family="system-ui,sans-serif" font-size="8">#10000</text>
+
+  <!-- Warning -->
+  <rect x="55" y="298" width="350" height="22" rx="6" fill="#fff0ec"/>
+  <text x="230" y="313" text-anchor="middle" fill="#c86a58" font-family="system-ui,sans-serif" font-size="10" font-weight="600">⚠️ 10000 个 DOM 节点 · 卡顿</text>
+
+  <!-- Arrow -->
+  <text x="430" y="210" fill="#5BA4CF" font-family="system-ui,sans-serif" font-size="24" font-weight="700">→</text>
+
+  <!-- ============ 虚拟列表 ============ -->
+  <rect x="480" y="55" width="380" height="280" rx="12" fill="white" filter="url(#shadow)" stroke="#b8d8c8" stroke-width="1"/>
+  <rect x="480" y="55" width="380" height="36" rx="12" fill="url(#greenGrad)"/><rect x="480" y="79" width="380" height="12" fill="url(#greenGrad)"/>
+  <text x="670" y="79" text-anchor="middle" fill="white" font-family="system-ui,sans-serif" font-size="13" font-weight="700">虚拟列表（10000 条）</text>
+
+  <!-- Full list container -->
+  <rect x="500" y="100" width="340" height="220" rx="6" fill="#f0f7f5" stroke="#d0e8da" stroke-width="1"/>
+
+  <!-- Scroll hint -->
+  <rect x="822" y="100" width="8" height="220" rx="4" fill="#d4e8e0"/>
+  <rect x="822" y="130" width="8" height="60" rx="4" fill="#6ABF8B" opacity="0.5"/>
+
+  <!-- Ghost items (not rendered) -->
+  <rect x="515" y="102" width="290" height="16" rx="4" fill="#dce8e2" opacity="0.4"/>
+  <rect x="515" y="122" width="290" height="16" rx="4" fill="#dce8e2" opacity="0.4"/>
+  <rect x="515" y="142" width="290" height="16" rx="4" fill="#dce8e2" opacity="0.4"/>
+
+  <!-- Visible viewport -->
+  <rect x="505" y="162" width="330" height="95" rx="8" fill="url(#viewport)" stroke="#5CB8B8" stroke-width="2" filter="url(#innerShadow)"/>
+  <text x="508" y="158" fill="#4AA3A3" font-family="system-ui,sans-serif" font-size="8" font-weight="600">👁️ 视口（只渲染可见区域）</text>
+
+  <!-- Rendered items in viewport -->
+  <rect x="515" y="170" width="310" height="22" rx="5" fill="url(#blueGrad)" opacity="0.85"/>
+  <text x="525" y="185" fill="white" font-family="system-ui,sans-serif" font-size="9">第 42 行 · 用户数据...</text>
+  <rect x="515" y="196" width="310" height="22" rx="5" fill="url(#tealGrad)" opacity="0.85"/>
+  <text x="525" y="211" fill="white" font-family="system-ui,sans-serif" font-size="9">第 43 行 · 用户数据...</text>
+  <rect x="515" y="222" width="310" height="22" rx="5" fill="url(#greenGrad)" opacity="0.85"/>
+  <text x="525" y="237" fill="white" font-family="system-ui,sans-serif" font-size="9">第 44 行 · 用户数据...</text>
+
+  <!-- Ghost below viewport -->
+  <rect x="515" y="263" width="290" height="16" rx="4" fill="#dce8e2" opacity="0.4"/>
+  <rect x="515" y="283" width="290" height="16" rx="4" fill="#dce8e2" opacity="0.4"/>
+  <rect x="515" y="303" width="290" height="16" rx="4" fill="#dce8e2" opacity="0.4"/>
+
+  <!-- Result badge -->
+  <rect x="500" y="323" width="340" height="26" rx="10" fill="#d4ecd8"/>
+  <text x="670" y="340" text-anchor="middle" fill="#3d7a5a" font-family="system-ui,sans-serif" font-size="11" font-weight="600">✅ 只渲染 12 个 DOM · 3.2s → 0.4s</text>
+
+  <!-- Scroll hint arrows -->
+  <text x="670" y="118" text-anchor="middle" fill="#6ABF8B" font-family="system-ui,sans-serif" font-size="8">△ 未渲染</text>
+  <text x="670" y="310" text-anchor="middle" fill="#6ABF8B" font-family="system-ui,sans-serif" font-size="8">▽ 未渲染</text>
+</svg>
